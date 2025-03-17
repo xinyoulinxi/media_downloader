@@ -1,0 +1,25 @@
+{
+    "name": "多媒体资源下载助手",
+    "description": "这是一款强大的 Chrome 扩展，可帮助你轻松提取并下载当前页面的图片和视频资源。支持单张图片下载、批量图片下载为压缩包，以及批量视频下载为压缩包。让你便捷地保存所需的多媒体内容。",
+    "version": "1.0",
+    "manifest_version": 3,
+    "action": {
+        "default_popup": "popup.html",
+        "default_icon": {
+            "16": "icon.png",
+            "32": "icon.png"
+        }
+    },
+    "permissions": [
+        "activeTab",
+        "scripting",
+        "tabs",
+        "clipboardWrite"
+    ],
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"],
+            "js": ["content.js"]
+        }
+    ]
+}

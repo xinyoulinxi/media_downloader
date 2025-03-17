@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>图片下载器</title>
+  <style>
+    html, body {
+      min-width: 500px;
+      min-height: 700px;
+      padding: 0; /* 修改为 0，去除多余的内边距 */
+      margin: 0;
+      overflow: auto;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    /* 选项卡样式 */
+    .tab {
+      display: flex; /* 使用 flexbox 布局 */
+      width: 100%; /* 占满宽度 */
+      border: 1px solid #ccc;
+      background-color: #f1f1f1;
+    }
+    .tab button {
+      background-color: inherit;
+      flex: 1; /* 每个按钮占比相同 */
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 20px 16px; /* 增加内边距，加大按钮 */
+      transition: 0.3s;
+      font-size: 18px; /* 增加字体大小 */
+    }
+    .tab button:hover {
+      background-color: #ddd;
+    }
+    .tab button.active {
+      background-color: #ccc;
+    }
+    .tabcontent {
+      display: none;
+      padding: 6px 12px;
+      border: 1px solid #ccc;
+      border-top: none;
+    }
+    #images {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px;
+    }
+    .image-container {
+      text-align: center;
+    }
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      cursor: pointer;
+      border-radius: 8px;
+      transition: transform 0.2s;
+    }
+    img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .image-info {
+      font-size: 12px;
+      color: #555;
+      margin-top: 5px;
+    }
+    .copy-link {
+      cursor: pointer;
+      color: #007bff;
+      text-decoration: underline;
+    }
+    #downloadAllBtn {
+      margin-bottom: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+    }
+    #downloadAllBtn:hover {
+      background-color: #0056b3;
+    }
+    #videos {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+      gap: 15px;
+    }
+    .video-container {
+      text-align: center;
+    }
+    .video-info {
+      font-size: 12px;
+      color: #555;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <!-- 选项卡导航 -->
+  <div class="tab">
+    <button class="tablinks" id="imagesTab">图片</button>
+    <button class="tablinks" id="videosTab">视频</button>
+  </div>
+  <!-- 图片内容 -->
+  <div id="Images" class="tabcontent">
+    <h2>页面上的图片 (<span id="imageCount">0</span>)</h2>
+    <button id="downloadAllBtn">下载所有图片为压缩包</button>
+    <div id="images"></div>
+  </div>
+  <!-- 视频内容 -->
+  <div id="Videos" class="tabcontent">
+    <h2>页面上的视频 (<span id="videoCount">0</span>)</h2>
+    <!-- 修改此处，添加和图片下载按钮相同的 ID -->
+    <button id="downloadAllBtn">下载所有视频为压缩包</button> 
+    <div id="videos"></div>
+  </div>
+  <script src="popup.js"></script>
+  <script src="jszip.min.js"></script>
+  <script src="FileSaver.min.js"></script>
+</body>
+</html>
